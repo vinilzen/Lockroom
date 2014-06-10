@@ -1,0 +1,178 @@
+doctype html
+html
+  head
+    meta charset="utf-8" 
+    meta content="IE=edge" http-equiv="X-UA-Compatible" 
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"
+    meta content="template language" name="keywords"
+    meta content="marchukilya@gmail.com" name="author"
+    meta content="" name="description"
+    link href="css/main.css" rel="stylesheet"
+    link rel="shortcut icon" type="image/png" href="favicon.png"
+    title Lockroom - Квест
+  body.inner
+    .container-fluid.quest
+      .row.first-row
+        .container
+          .row
+            .col-md-3
+              a.btn.btn-default href="/index.html" Квесты
+            .col-md-6.text-center
+              h1 Lockroom
+            .col-md-3
+              a.btn.btn-default href="/k.html" Контакты
+          .row
+            .col-md-12.text-center
+              h2 Нехорошая квартира
+              p.descr "Замуровали демоны!" - знакомая всем с детства фраза принимает в этом комнате буквальный характер. Вас ждут мистические темницы подземелья из смутного времени, чтобы выбраться из которых, вам прийдется познакомиться с различными орудиями пыток тех лет, а также вспомнить классику советского кинематографа.
+      .row.darked
+        .container
+          .row
+            .col-sm-3.text-center
+              span.ico.ico-time
+              p 60 минут
+            .col-sm-3.text-center
+              span.ico.ico-users
+              p 2 - 4 игрока
+            .col-sm-3.text-center
+              span.ico.ico-metro
+              p Тульская
+            .col-sm-3.text-center
+              span.ico.ico-addr
+              p Малая Тульская улица д.2/1 к5
+      
+    .container-fluid
+      .row
+        .col-md-12.text-center.timetable
+          h3 Бронируйте удобное для вас время
+          .table-responsive
+            .inf-block
+              span.free Свободно
+              span.busy Забронировано
+            table.table
+              tr
+                td
+                  p
+                    strong 10 июня
+                    span пятница
+                td.text-left
+                  span.time 00:00
+                  span.time 01:15
+                  span.time 02:30
+                  span.time 04:00
+                  span.time 05:15
+                  span.time 06:30
+                  span.time.dis 07:45
+                  span.time.turnoff 09:00
+                  span.time 10:15
+                  span.time 11:30
+                  span.time 12:45
+                  span.time 14:00
+                  span.time 15:15
+                  span.time 16:30
+                  span.time 17:45
+                  span.time 19:00
+                  span.time 20:15
+                  span.time 21:30
+                  span.time 22:45
+                  .clearfix
+                  .price.am
+                    span 3000 руб.
+                  .price.pm
+                    span 4000 руб.
+              tr
+                td
+                  p.weekend
+                    strong 11 июня
+                    span Суббота
+                td.text-left
+                  span.time data-time="00:00" data-date="11 июня" data-day="cуббота" data-price="4000" 00:00
+                  span.time data-time="01:15" data-date="11 июня" data-day="cуббота" data-price="4000" 01:15
+                  span.time 02:30
+                  span.time 04:00
+                  span.time 05:15
+                  span.time 06:30
+                  span.time 07:45
+                  span.time 09:00
+                  span.time 10:15
+                  span.time 11:30
+                  span.time 12:45
+                  span.time 14:00
+                  span.time 15:15
+                  span.time 16:30
+                  span.time 17:45
+                  span.time 19:00
+                  span.time 20:15
+                  span.time 21:30
+                  span.time 22:45
+                  .clearfix
+                  .price.am
+                    span 3000 руб.
+                  .price.pm
+                    span 4000 руб.
+              tr
+                td
+                  p.weekend
+
+
+                    strong 12 июня
+                    span Воскресенье
+                td.text-left
+                  span.time 00:00
+                  span.time 01:15
+                  span.time 02:30
+                  span.time 04:00
+                  span.time 05:15
+                  span.time 06:30
+                  span.time.dis 07:45
+                  span.time.turnoff 09:00
+                  span.time 10:15
+                  span.time 11:30
+                  span.time 12:45
+                  span.time 14:00
+                  span.time 15:15
+                  span.time 16:30
+                  span.time 17:45
+                  span.time 19:00
+                  span.time 20:15
+                  span.time 21:30
+                  span.time 22:45
+                  .clearfix
+                  .price.am
+                    span 3000 руб.
+                  .price.pm
+                    span 4000 руб.
+
+          hr
+
+          .footer
+            p.pull-left LOCKROOM
+            p.pull-right 2014 год
+
+
+    .formaModal.modal.fade aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" 
+      .modal-dialog.modal-lg
+        .modal-content
+          .modal-header
+            button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+            h2#myModalLabel.modal-title.text-center
+              | 6 июня (пятница)   10:15
+              br
+              strong 3 000 
+              | руб.
+          .modal-body
+            form role="form" 
+              .form-group
+                label for="exampleInputEmail1" Имя
+                input#exampleInputEmail1.form-control.input-lg type="text" 
+              .form-group
+                label for="exampleInputPassword1" Телефон
+                input#exampleInputPassword1.form-control.input-lg type="text"
+              .form-group
+                label for="exampleInputPassword2" Email
+                input#exampleInputPassword2.form-control.input-lg type="text"
+              button.btn.btn-default.btn-block.btn-lg type="submit" Забронировать
+
+    script src="js/jquery-1.11.0.min.js"
+    script src="js/bootstrap.min.js"
+    script src="js/main.js"
