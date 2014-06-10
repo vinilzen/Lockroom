@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html>
+  <?php
+
+    $quest = array(
+        1 =>  array(
+          'class' => 'q1',
+          'title'=>'Темница Ивана Грозного',
+          'description'=>'<p class="descr">"Замуровали демоны!" - знакомая всем с детства фраза принимает в этом комнате буквальный характер. Вас ждут мистические темницы подземелья из смутного времени, чтобы выбраться из которых, вам прийдется познакомиться с различными орудиями пыток тех лет, а также вспомнить классику советского кинематографа.</p>'
+        ),
+        2 => array(
+          'class' => 'q2',
+          'title'=>'Нехорошая квартира',
+          'description'=>'<p class="descr">В этой квартире переплелись не только судьбы персонажей книги Булгакова, но еще пространство и время. Чтобы выбраться из очень атмосферного помещения игрокам предстоит распутать этот сложный клубок загадок, а возможно и познакомиться с самим Воландом!</p>'
+        ),
+    );
+
+    $times = array('00:00', '01:15', '02:30', '04:00', '05:15', '06:30', 
+                  '07:45', '09:00', '10:15', '11:30', '12:45', '14:00', 
+                  '15:15', '16:30', '17:45', '19:00', '20:15', '21:30', '22:45');
+
+    if (isset($_GET['q']) && isset($quest[$_GET['q']]))
+      $q = intval($_GET['q']);
+    else
+      $q = 1;
+
+    // var_dump( $days[1] ); die;
+
+
+    function makeDayArray( ){
+      $days = array('понедельник', 'вторник', 'среда', 'четверг', 'пятница', 'суббота', 'воскресенье');
+      $month = array('января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'ноября', 'октября', 'декабря' );
+      $endDate   = strtotime( '+14 day' );
+      $currDate  = strtotime( 'now' );
+      $dayArray  = array();
+
+      do{
+        $dayArray[] = array(
+          'day_name' => $days[intval(date( 'N' , $currDate ))-1],
+          'month_name' => $month[intval(date( 'n' , $currDate ))-1],
+          'day' => date( 'j' , $currDate ),
+          'date' => date('Ymd', $currDate)
+        );
+        $currDate = strtotime( '+1 day' , $currDate );
+      } while( $currDate<=$endDate );
+
+      return $dayArray;
+    }
+
+    $next_2week = makeDayArray();
+
+    // var_dump( $next_2week );     die;
+
+  ?>
   <head>
     <meta charset="utf-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta content="template language" name="keywords">
+    <meta content="квесты" name="keywords">
     <meta content="marchukilya@gmail.com" name="author">
     <meta content="" name="description">
     <link href="css/main.css" rel="stylesheet">
     <link href="favicon.png" rel="shortcut icon" type="image/png">
-    <title>Lockroom - Квест</title>
+    <title>Lockroom - Квест - <?php echo $quest[$q]['title']; ?></title>
   </head>
   <body class="inner">
-    <div class="container-fluid quest">
+    <!--  -->
+    <div class="container-fluid quest <?php echo $quest[$q]['class']; ?>">
       <div class="row first-row">
         <div class="container">
           <div class="row">
             <div class="col-md-3">
-              <a class="btn btn-default" href="/index.html">Квесты</a>
+              <a class="btn btn-default" href="index.html">Квесты</a>
             </div>
             <div class="col-md-6 text-center">
-              <h1>
-                Lockroom
-              </h1>
+              <h1>Lockroom</h1>
             </div>
             <div class="col-md-3">
-              <a class="btn btn-default" href="/k.html">Контакты</a>
+              <a class="btn btn-default" href="k.html">Контакты</a>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
-              <h2>
-                Нехорошая квартира
-              </h2>
-              <p class="descr">
-                "Замуровали демоны!" - знакомая всем с детства фраза принимает в этом комнате буквальный характер. Вас ждут мистические темницы подземелья из смутного времени, чтобы выбраться из которых, вам прийдется познакомиться с различными орудиями пыток тех лет, а также вспомнить классику советского кинематографа.
-              </p>
+              <h2><?php echo $quest[$q]['title']; ?></h2>
+              <?php echo $quest[$q]['description']; ?>
             </div>
           </div>
         </div>
@@ -74,65 +121,76 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12 text-center timetable">
-          <h3>
-            Бронируйте удобное для вас время
-          </h3>
+          <h3>Бронируйте удобное для вас время</h3>
           <div class="table-responsive">
             <div class="inf-block">
               <span class="free">Свободно</span><span class="busy">Забронировано</span>
             </div>
             <table class="table">
+              <?php foreach ($next_2week as $value) {
+                $priceAm = 3000;
+                $pricePm = 3500;
+                $pricesStr = '';
+                $workday = 1;
+                if (
+                  $value['date'] == '20140612' || 
+                  $value['date'] == '20140613' || 
+                  $value['day_name'] == 'суббота' || 
+                  $value['day_name'] == 'воскресенье')
+                {
+                  $workday = 0;
+                  $priceAm = 3000;
+                  $pricePm = 3500;
+                  $pricesStr =  '<div class="price" style="width: 565px;"><span>3000 руб.</span></div>'.
+                                ' <div class="price" style="width: 508px;"><span>3500 руб.</span></div>';
+
+                } else {
+
+                  $priceAm = 3000;
+                  $pricePm = 2000;
+                  $pricesStr =  '<div class="price" style="width: 165px;"><span>3000 руб.</span></div>'.
+                                ' <div class="price" style="width: 394px; margin-left: 229px;"><span>2000 руб.</span></div>'.
+                                ' <div class="price" style="width: 279px;"><span>3000 руб.</span></div>';
+                }
+
+                ?>
               <tr>
                 <td>
-                  <p>
-                    <strong>10 июня</strong><span>пятница</span>
+                  <p class="<?php echo $value['day_name'] == 'суббота' || $value['day_name'] == 'воскресенье' ? 'weekend' : ''; ?>">
+                    <strong><?php echo $value['day']; ?> <?php echo $value['month_name']; ?></strong><span><?php echo $value['day_name']; ?></span>
                   </p>
                 </td>
                 <td class="text-left">
-                  <span class="time">00:00</span><span class="time">01:15</span><span class="time">02:30</span><span class="time">04:00</span><span class="time">05:15</span><span class="time">06:30</span><span class="time dis">07:45</span><span class="time turnoff">09:00</span><span class="time">10:15</span><span class="time">11:30</span><span class="time">12:45</span><span class="time">14:00</span><span class="time">15:15</span><span class="time">16:30</span><span class="time">17:45</span><span class="time">19:00</span><span class="time">20:15</span><span class="time">21:30</span><span class="time">22:45</span>
+                  <?php foreach ($times as $k=>$time) {
+                    $dis = 0;
+                    if ($q==1){
+                      if ($value['date'] == '20140612' && ($time == '02:30' || $time == '11:30' || $time == '17:45')) $dis = 1;
+                      if ($value['date']== '20140613' && $time == '14:00') $dis = 1;
+                      if ($value['date']== '20140614' && ($time == '10:15' || $time == '16:30')) $dis = 1;
+                    }
+                    if ($q==2){
+                      if ($value['date'] == '20140612' && ($time == '04:00' || $time == '05:15' || $time == '17:45' || $time == '19:00')) $dis = 1;
+                      if ($value['date']== '20140613' && $time == '19:00') $dis = 1;
+                      if ($value['date']== '20140614' && ($time == '10:15' || $time == '00:00' || $time == '17:45' || $time == '16:30')) $dis = 1;
+                    } 
+
+                    ?><span 
+                      data-time="<?php echo $time; ?>" 
+                      data-date="<?php echo $value['day']; ?> <?php echo $value['month_name']; ?>" 
+                      data-day="<?php echo $value['day_name']; ?>" 
+                      data-price="<?php
+                        if ($workday === 1) echo ($k>3 && $k<14) ? $pricePm : $priceAm;
+                        else echo $k<9 ? $priceAm : $pricePm; ?>" 
+                      class="time <?php
+          echo ($value['date'] === date('Ymd') || $dis) ? 'dis' : '';
+          if ($value['date'] != '20140612' && $value['date'] != '20140613' && $value['day_name'] != 'суббота' && $value['day_name'] != 'воскресенье' && $k > 2 && $k < 7 ) echo ' turnoff'; 
+        ?>">
+                      <?php echo $time; ?></span><?php } ?>
                   <div class="clearfix"></div>
-                  <div class="price am">
-                    <span>3000 руб.</span>
-                  </div>
-                  <div class="price pm">
-                    <span>4000 руб.</span>
-                  </div>
+                  <?php echo $pricesStr; ?>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <p class="weekend">
-                    <strong>11 июня</strong><span>Суббота</span>
-                  </p>
-                </td>
-                <td class="text-left">
-                  <span class="time" data-date="11 июня" data-day="cуббота" data-price="4000" data-time="00:00">00:00</span><span class="time" data-date="11 июня" data-day="cуббота" data-price="4000" data-time="01:15">01:15</span><span class="time">02:30</span><span class="time">04:00</span><span class="time">05:15</span><span class="time">06:30</span><span class="time">07:45</span><span class="time">09:00</span><span class="time">10:15</span><span class="time">11:30</span><span class="time">12:45</span><span class="time">14:00</span><span class="time">15:15</span><span class="time">16:30</span><span class="time">17:45</span><span class="time">19:00</span><span class="time">20:15</span><span class="time">21:30</span><span class="time">22:45</span>
-                  <div class="clearfix"></div>
-                  <div class="price am">
-                    <span>3000 руб.</span>
-                  </div>
-                  <div class="price pm">
-                    <span>4000 руб.</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="weekend">
-                    <strong>12 июня</strong><span>Воскресенье</span>
-                  </p>
-                </td>
-                <td class="text-left">
-                  <span class="time">00:00</span><span class="time">01:15</span><span class="time">02:30</span><span class="time">04:00</span><span class="time">05:15</span><span class="time">06:30</span><span class="time dis">07:45</span><span class="time turnoff">09:00</span><span class="time">10:15</span><span class="time">11:30</span><span class="time">12:45</span><span class="time">14:00</span><span class="time">15:15</span><span class="time">16:30</span><span class="time">17:45</span><span class="time">19:00</span><span class="time">20:15</span><span class="time">21:30</span><span class="time">22:45</span>
-                  <div class="clearfix"></div>
-                  <div class="price am">
-                    <span>3000 руб.</span>
-                  </div>
-                  <div class="price pm">
-                    <span>4000 руб.</span>
-                  </div>
-                </td>
-              </tr>
+              <?php } ?>
             </table>
           </div>
           <hr>

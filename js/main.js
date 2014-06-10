@@ -1,5 +1,5 @@
 $(function() {
-	$('.time').click(function(){
+	$('.time:not(.turnoff, .dis)').click(function(){
 		var str =	$(this).attr('data-date') +
 					' ('+ $(this).attr('data-day') +') '+
 					$(this).attr('data-time') +

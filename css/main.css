@@ -6595,7 +6595,7 @@ h3 {
   font-size: 18px;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
-  padding: 0px 130px;
+  padding: 0px 80px;
   margin-top: 20px;
 }
 
@@ -6699,8 +6699,8 @@ h3 {
 
 .table-responsive {
   position: relative;
-  min-width: 1220px;
-  width: 1220px;
+  min-width: 1222px;
+  width: 1222px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -6784,7 +6784,6 @@ h3 {
 }
 
 .rules {
-  margin-top: 30px;
   margin-bottom: 40px;
 }
 .rules p {
