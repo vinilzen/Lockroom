@@ -6784,6 +6784,7 @@ h3 {
 }
 
 .rules {
+  margin-top: -10px;
   margin-bottom: 40px;
 }
 .rules p {

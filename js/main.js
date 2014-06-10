@@ -5,6 +5,8 @@ $(function() {
 					$(this).attr('data-time') +
 					'<br><strong>'+$(this).attr('data-price')+' </strong>руб.';
 		$('.modal-title').html(str);
+		$('.formaModal .modal-body form').show();
+		$('.formaModal .modal-body h4').hide();
 		$('.formaModal').modal('show');
 	});
 
@@ -21,7 +23,19 @@ $(function() {
 				inf: $('#myModalLabel').text()
 			},
 			function( data ) {
-				console.log(data)
+				if (data == '1') {
+					$('#name').val('');
+					$('#phone').val('');
+					$('#mail').val('');
+					$('.formaModal .modal-body form').fadeOut(function(){
+						$('.formaModal .modal-body h4').fadeIn(400, function() {
+							$('.formaModal').modal('hide');
+						});
+					});
+				} else {
+					console.log(data);
+					alert(data);
+				}
 			}
 		);
 		return false;

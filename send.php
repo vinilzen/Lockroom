@@ -2,7 +2,7 @@
 
 	if ($_POST['name'] && $_POST['phone'] && $_POST['mail'] && $_POST['inf'] && $_POST['title_quest'] ) {
 
-		$to      = 'marchukilya@gmail.com';
+		$to      = 'marchukilya@gmail.com, ilya978@gmail.com';
 		$subject = 'Lockroom - '.$_POST['inf'];
 		$message = 'Name - '.$_POST["name"].'; '.
 				   'Phone - '.$_POST["phone"].'; '.
@@ -16,6 +16,10 @@
 		// die;
 
 		mail($to, $subject, $message);
+
+		echo 1;
+
+		die;
 
 	} else {
 		echo 'Не полные данные!';
