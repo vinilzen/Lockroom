@@ -7,4 +7,23 @@ $(function() {
 		$('.modal-title').html(str);
 		$('.formaModal').modal('show');
 	});
+
+
+
+	$('.btn-block.btn-lg').click(function(){
+		$.post(
+			"send.php",
+			{
+				name: $('#name').val(),
+				phone: $('#phone').val(),
+				mail: $('#mail').val(),
+				title_quest: $('#title_quest').text(),
+				inf: $('#myModalLabel').text()
+			},
+			function( data ) {
+				console.log(data)
+			}
+		);
+		return false;
+	})
 });

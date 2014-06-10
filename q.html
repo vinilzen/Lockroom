@@ -81,7 +81,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 text-center">
-              <h2><?php echo $quest[$q]['title']; ?></h2>
+              <h2 id="title_quest"><?php echo $quest[$q]['title']; ?></h2>
               <?php echo $quest[$q]['description']; ?>
             </div>
           </div>
@@ -217,13 +217,13 @@
           <div class="modal-body">
             <form role="form">
               <div class="form-group">
-                <label for="exampleInputEmail1">Имя</label><input class="form-control input-lg" id="exampleInputEmail1" type="text">
+                <label for="name">Имя</label><input class="form-control input-lg" id="name" type="text">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword1">Телефон</label><input class="form-control input-lg" id="exampleInputPassword1" type="text">
+                <label for="phone">Телефон</label><input class="form-control input-lg" id="phone" type="text">
               </div>
               <div class="form-group">
-                <label for="exampleInputPassword2">Email</label><input class="form-control input-lg" id="exampleInputPassword2" type="text">
+                <label for="mail">Email</label><input class="form-control input-lg" id="mail" type="text">
               </div>
               <button class="btn btn-default btn-block btn-lg" type="submit">Забронировать</button>
             </form>
