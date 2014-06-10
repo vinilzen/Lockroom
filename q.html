@@ -163,6 +163,10 @@
                 <td class="text-left">
                   <?php foreach ($times as $k=>$time) {
                     $dis = 0;
+                    
+                    $near = 0;
+                    if ($time < date('h:i', strtotime( '+3 hours' )) ) $near = 1;
+
                     if ($q==1){
                       if ($value['date'] == '20140612' && ($time == '02:30' || $time == '11:30' || $time == '17:45')) $dis = 1;
                       if ($value['date']== '20140613' && $time == '14:00') $dis = 1;
@@ -184,7 +188,7 @@
                         if ($workday === 1) echo ($k>3 && $k<14) ? $pricePm : $priceAm;
                         else echo $k<9 ? $priceAm : $pricePm; ?>" 
                       class="time <?php
-          echo ($value['date'] === date('Ymd') || $dis) ? 'dis' : '';
+          echo (($value['date'] === date('Ymd') && $near) || $dis) ? 'dis' : '';
           if ($value['date'] != '20140612' && $value['date'] != '20140613' && $value['day_name'] != 'суббота' && $value['day_name'] != 'воскресенье' && $k > 2 && $k < 7 ) echo ' turnoff'; 
         ?>">
                       <?php echo $time; ?></span><?php } ?>
