@@ -28,13 +28,13 @@
       <div class="col-sm-8 col-sm-offset-2">
         <ul class="nav nav-pills nav-justified">
           <li>
-            <a class="btn btn-default" href="index.html">Квесты</a>
+            <a class="btn btn-default" href="index.php">Квесты</a>
           </li>
           <li>
-            <a class="btn btn-default" href="r.html">О проекте</a>
+            <a class="btn btn-default" href="r.php">О проекте</a>
           </li>
           <li>
-            <a class="btn btn-default" href="k.html">Контакты</a>
+            <a class="btn btn-default" href="k.php">Контакты</a>
           </li>
         </ul>
       </div>

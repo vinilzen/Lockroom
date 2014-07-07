@@ -9,7 +9,7 @@
     <meta content="" name="description">
     <link href="css/main.css" rel="stylesheet">
     <link href="favicon.png" rel="shortcut icon" type="image/png">
-    <title>Lockroom - Контакты</title>
+    <title>Lockroom - Главная</title>
   </head>
   <body></body>
   <div class="container">
@@ -28,63 +28,89 @@
       <div class="col-sm-8 col-sm-offset-2">
         <ul class="nav nav-pills nav-justified">
           <li>
-            <a class="btn btn-default" href="index.html">Квесты</a>
+            <a class="btn btn-default" href="index.php">Квесты</a>
           </li>
           <li>
-            <a class="btn btn-default" href="r.html">О проекте</a>
+            <a class="btn btn-default" href="r.php">О проекте</a>
           </li>
           <li>
-            <a class="btn btn-default" href="k.html">Контакты</a>
+            <a class="btn btn-default" href="k.php">Контакты</a>
           </li>
         </ul>
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-12">
-        <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <div id="map1" style="width:100%; height:500px;"></div>
-        <script type="text/javascript">
-          var geocoder,
-              map,
-              address = 'Москва, Малая Тульская улица д.2/1 к5';
-          
-          function init_map() {
-            geocoder = new google.maps.Geocoder();
-            geocoder.geocode( { 'address': address}, function(results, status) {
-              if (status == google.maps.GeocoderStatus.OK) {
-                map.setCenter(results[0].geometry.location);
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location,
-                    title: address
-                });
-          
-                infowindow.open(map,marker);
-          
-                google.maps.event.addListener(marker, 'click', function() {
-                  infowindow.open(map,marker);
-                });
-          
-              } else alert('Geocode was not successful for the following reason: ' + status);
-            });
-            var infowindow = new google.maps.InfoWindow({ content: 
-            '<div>'+
-              '<p>8 916 674 93 15</p>'+
-              '<p>hello@lockroom.ru</p>'+
-              '<p>Метро Тульская</p>'+
-              '<p>Малая Тульская ул. д.2/1 к5</p>'+
-            '</div>' }),
-                myOptions = {
-                  zoom: 15,
-                  scrollwheel: false, //disableDefaultUI: true,
-                  zoomControl: true,
-                  mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-            map = new google.maps.Map(document.getElementById("map1"), myOptions);
-          }
-          
-          google.maps.event.addDomListener(window, "load", init_map);
-        </script>
+      <div class="col-sm-6">
+        <a class="thumbnail" href="q.php?q=1"><img src="img/pic1.jpg">
+          <div class="caption">
+            <h2>
+              Темница Ивана Грозного
+            </h2>
+            <div class="dopinfo">
+              <p class="users">
+                2 - 4 игрока
+              </p>
+              <p class="metro">
+                Тульская
+              </p>
+              <p class="adres">
+                Малая Тульская улица д.2/1 к5
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6">
+        <a class="thumbnail" href="q.php?q=2"><img src="img/pic2.jpg">
+          <div class="caption">
+            <h2>
+              Нехорошая квартира
+            </h2>
+            <div class="dopinfo">
+              <p class="users">
+                2 - 4 игрока
+              </p>
+              <p class="metro">
+                Тульская
+              </p>
+              <p class="adres">
+                Малая Тульская улица д.2/1 к5
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6">
+        <a class="thumbnail" href="#"><img src="img/pic3.jpg">
+          <div class="caption">
+            <h2>
+              Зеркальный лабиринт
+            </h2>
+            <p>
+              <strong>Квест в разработке</strong>
+            </p>
+            <p>
+              Выход запланирован на июль 2014
+            </p>
+            <i class="glyphicon glyphicon-time"></i>
+          </div>
+        </a>
+      </div>
+      <div class="col-sm-6">
+        <a class="thumbnail" href="#"><img src="img/pic4.jpg">
+          <div class="caption">
+            <h2>
+              Комната страха
+            </h2>
+            <p>
+              <strong>Квест в разработке</strong>
+            </p>
+            <p>
+              Выход запланирован на август 2014
+            </p>
+            <i class="glyphicon glyphicon-time"></i>
+          </div>
+        </a>
       </div>
     </div>
     <hr>

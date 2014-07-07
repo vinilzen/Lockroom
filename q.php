@@ -70,13 +70,13 @@
         <div class="container">
           <div class="row">
             <div class="col-md-3">
-              <a class="btn btn-default" href="index.html">Квесты</a>
+              <a class="btn btn-default" href="index.php">Квесты</a>
             </div>
             <div class="col-md-6 text-center">
               <h1>Lockroom</h1>
             </div>
             <div class="col-md-3">
-              <a class="btn btn-default" href="k.html">Контакты</a>
+              <a class="btn btn-default" href="k.php">Контакты</a>
             </div>
           </div>
           <div class="row">
@@ -165,7 +165,7 @@
                     $dis = 0;
                     
                     $near = 0;
-                    if ($time < date('h:i', strtotime( '+3 hours' )) ) $near = 1;
+                    if ($time < date('H:i', strtotime( '+3 hours' )) ) $near = 1;
 
                     if ($q==1){
                       if ($value['date'] == '20140612' && ($time == '02:30' || $time == '11:30' || $time == '17:45')) $dis = 1;
